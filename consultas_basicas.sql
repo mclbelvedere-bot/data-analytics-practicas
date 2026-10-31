@@ -1,3 +1,7 @@
+-- ══════════════════════════════════════════
+-- TechStore — Consultas Básicas SELECT
+-- ══════════════════════════════════════════
+
 -- Consulta 1: Exploración general de la tabla sales
 SELECT * 
 FROM sales;
