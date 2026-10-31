@@ -1,17 +1,9 @@
--- ════════════════════════════════════════════════════════════════════════════
 -- PRE-ENTREGA 4: Consultas SQL de Negocio — RetailPro
--- Autor: María Belvedere
--- Fecha: 31/10/2026
--- Base de Datos: Ventas_Tech_DB
--- ════════════════════════════════════════════════════════════════════════════
+-- Micaela Belvedere
 
 USE Ventas_Tech_DB;
-
--- ════════════════════════════════════════════════════════════════════════════
 -- CONSULTA 1: Resumen ejecutivo mensual
--- Objetivo: Agrupar por mes, calcular facturación total, cantidad de pedidos y ticket promedio.
--- Criterio Rúbrica (20%): Cumple agrupar por mes, métricas requeridas y alias descriptivos.
--- ════════════════════════════════════════════════════════════════════════════
+-- Objetivo: Agrupar por mes, calcular facturación total, cantidad de pedidos y ticket promedio
 
 SELECT 
     MONTH(fecha_venta) AS mes_numero,
@@ -22,11 +14,8 @@ FROM ventas
 GROUP BY MONTH(fecha_venta)
 ORDER BY mes_numero;
 
--- ════════════════════════════════════════════════════════════════════════════
 -- CONSULTA 2: Ranking de productos (Top 5)
--- Objetivo: Obtener el Top 5 de productos con mayor facturación total y unidades sold.
--- Criterio Rúbrica (20%): Muestra id_producto, unidades, total, ordenado y limitado a 5.
--- ════════════════════════════════════════════════════════════════════════════
+-- Objetivo: Obtener el Top 5 de productos con mayor facturación total y unidades sold
 
 SELECT 
     id_producto,
@@ -37,11 +26,8 @@ GROUP BY id_producto
 ORDER BY total_facturado DESC
 LIMIT 5;
 
--- ════════════════════════════════════════════════════════════════════════════
 -- CONSULTA 3: Clientes recurrentes
--- Objetivo: Identificar clientes con más de un pedido registrado, con pedidos y gasto total.
--- Criterio Rúbrica (25%): Uso correcto de GROUP BY y HAVING COUNT(*) > 1.
--- ════════════════════════════════════════════════════════════════════════════
+-- Objetivo: Identificar clientes con más de un pedido registrado, con pedidos y gasto total
 
 SELECT 
     id_cliente,
@@ -52,11 +38,8 @@ GROUP BY id_cliente
 HAVING COUNT(*) > 1
 ORDER BY cantidad_pedidos DESC, total_gastado DESC;
 
--- ════════════════════════════════════════════════════════════════════════════
 -- CONSULTA 4: Productos por encima/por debajo del promedio
 -- Objetivo: Comparar facturación de cada producto vs el promedio de facturación POR PRODUCTO.
--- Criterio Rúbrica (25%): Uso de CTE/WITH subconsulta, promediando los totales por producto y CASE WHEN.
--- ════════════════════════════════════════════════════════════════════════════
 
 WITH facturacion_por_producto AS (
     -- Subconsulta 1: Facturación total individual de cada producto
@@ -83,11 +66,7 @@ FROM facturacion_por_producto f
 CROSS JOIN promedio_general_productos p
 ORDER BY f.total_facturado_producto DESC;
 
-
--- ════════════════════════════════════════════════════════════════════════════
 -- BLOQUE DE CIERRE: Hallazgos de Negocio (Documentados)
--- Criterio Rúbrica (10%): 3 hallazgos concretos, específicos de RetailPro y accionables.
--- ════════════════════════════════════════════════════════════════════════════
 /*
 HALLAZGOS DE NEGOCIO Y RECOMENDACIONES ESTRATÉGICAS — RETAILPRO:
 
