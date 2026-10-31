@@ -15,7 +15,7 @@ GROUP BY MONTH(fecha_venta)
 ORDER BY mes_numero;
 
 -- CONSULTA 2: Ranking de productos (Top 5)
--- Objetivo: Obtener el Top 5 de productos con mayor facturación total y unidades sold
+-- Objetivo: Obtener el Top 5 de productos con mayor facturación total y unidades vendidas
 
 SELECT 
     id_producto,
