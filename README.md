@@ -1,15 +1,15 @@
-# Prácticas de Data Analytics — Coderhouse
+# TechStore — Consultas Básicas SELECT y Alias
 
-Repositorio para la entrega de ejercicios, prácticas y checkpoints del curso de Data Analytics Pro.
+## Respuestas de la práctica
 
-## Contenido del Repositorio
+### 1. ¿Por qué es mala práctica usar `SELECT *` en producción?
+* **Rendimiento:** Carga columnas innecesarias, consumiendo más memoria RAM, CPU y ancho de banda de la red.
+* **Mantenibilidad:** Si la tabla cambia de estructura (se añaden o quitan columnas), los reportes o aplicaciones conectadas pueden romperse.
+* **Seguridad:** Expone datos sensibles que no eran requeridos para la consulta.
 
-- **`actividad_unidad3_diseno.sql`**: Script DDL para el diseño inicial de tablas.
-- **`modulo2_unidad2_inventario.sql`**: Script DDL/DML para la gestión de inventario (creación de tabla, carga de datos y actualizaciones).
-- **`ventas_tech_db.sql`**: Checkpoint integrador (Pre-entrega 3). Modelo relacional normalizado en 3NF para la base `Ventas_Tech_DB` (tablas de dimensiones `categorias`, `clientes`, `productos` y tabla de hechos `ventas`), con carga masiva de datos y consultas de validación.
+### 2. ¿Por qué son importantes los alias para un stakeholder no técnico?
+Los alias traducen nombres técnicos a un lenguaje de negocio comprensible. 
 
-## Instrucciones de Ejecución
-1. Abrir SQL Server Management Studio (SSMS).
-2. Conectarse a la instancia de base de datos local.
-3. Crear o seleccionar la base de datos de trabajo (`CREATE DATABASE Ventas_Tech_DB;`).
-4. Abrir y ejecutar los scripts `.sql` en el orden correspondiente.
+Por ejemplo, cambiar `total_amount` por `monto_total_ventas` mediante `AS`:
+```sql
+SELECT total_amount AS monto_total_ventas FROM sales;
