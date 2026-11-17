@@ -1,15 +1,25 @@
-# TechStore — Consultas Básicas SELECT y Alias
+# RetailPro — Proyecto de Análisis de Datos (`Ventas_Tech_DB`)
 
-## Respuestas de la práctica
+Repositorio de prácticas y entregables del proyecto **RetailPro**, enfocado en el diseño de bases de datos relacionales, consultas SQL analíticas, modelado con JOINs y visualización en Power BI.
 
-### 1. ¿Por qué es mala práctica usar `SELECT *` en producción?
-* **Rendimiento:** Carga columnas innecesarias, consumiendo más memoria RAM, CPU y ancho de banda de la red.
-* **Mantenibilidad:** Si la tabla cambia de estructura (se añaden o quitan columnas), los reportes o aplicaciones conectadas pueden romperse.
-* **Seguridad:** Expone datos sensibles que no eran requeridos para la consulta.
+## Estructura del repositorio
 
-### 2. ¿Por qué son importantes los alias para un stakeholder no técnico?
-Los alias traducen nombres técnicos a un lenguaje de negocio comprensible. 
+* `ventas_tech_db.sql`: Script DDL y DML inicial. Crea las tablas `categorias`, `clientes`, `productos` y `ventas`, e inserta los registros base de prueba.
+* `modulo2_unidad2_inventario.sql`: Consultas iniciales de control de inventario y catálogo.
+* `actividad_unidad3_diseno.sql`: Ejercicios de diseño y normalización del modelo relacional.
+* `consultas_basicas.sql`: Consultas exploratorias de filtrado y agregación simple.
+* `m4_consultas_negocio.sql`: Consultas analíticas de negocio sobre `Ventas_Tech_DB` (resumen ejecutivo mensual, ranking Top 5 de productos, clientes recurrentes y comparación contra el promedio mediante CTEs).
+* `m5_consultas_joins.sql`: Consultas de integración con `INNER JOIN`, `LEFT JOIN`, `UNION ALL` y simulación portable de `FULL OUTER JOIN`.
+* `Entregable_Unidad6_PowerBI.pdf`: Documentación del modelo analítico y reporte visual en Power BI.
 
-Por ejemplo, cambiar `total_amount` por `monto_total_ventas` mediante `AS`:
-```sql
-SELECT total_amount AS monto_total_ventas FROM sales;
+## Herramientas utilizadas
+
+* **Motor SQL:** MySQL / MariaDB
+* **Visualización:** Microsoft Power BI
+* **Control de versiones:** Git & GitHub
+
+## Cómo ejecutar los scripts
+
+1. Ejecutar primero `ventas_tech_db.sql` para crear la estructura de tablas y cargar los datos de referencia.
+2. Ejecutar `m4_consultas_negocio.sql` (el script incluye `USE Ventas_Tech_DB;` al inicio para seleccionar la base automáticamente).
+3. *Nota de compatibilidad:* Las consultas de `m5_consultas_joins.sql` trabajan sobre el modelo conceptual ampliado del Módulo 5 (incorporando atributos dimensionales como `region_id`, `segmento` y `tipo_origen`).
